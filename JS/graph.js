@@ -1,6 +1,5 @@
 
 export function makeGraph() {
-    console.log(this.response)
     let objToPush;
     let keys = Object.keys(this.response)
 
@@ -21,14 +20,13 @@ export function makeGraph() {
 let chart;
 
 export function createCanvasElement(arr) {
-    console.log(arr)
     chart = new CanvasJS.Chart("content", {
         animationEnabled: true,
         title: {
             text: "Coins Value Comparison To USD"
         },
         axisX: {
-            valueFormatString: "mm:ss"
+            valueFormatString: "hh:mm:ss"
         },
         axisY: {
             title: "Worth in $",

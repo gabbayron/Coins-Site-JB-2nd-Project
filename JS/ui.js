@@ -1,7 +1,4 @@
 
-import { toLocalStorage, fromLoacalStorage } from './localStorge.js';
-
-
 let content = document.querySelector('#content');
 export function createCard(value) {
     const div = document.createElement('div');
@@ -14,7 +11,7 @@ export function createCard(value) {
                     <div class="card-header">${symbols[index]}</div> 
                     <p class="card-text">Name : ${name} </p>
                     <div class="custom-control custom-switch">
-                         <a class="btn btn-primary btn-lg collapsible" href="#" role="button" id="${id}">Learn more</a>
+                         <a class="btn btn-primary btn-lg collapsible" href="#" role="button" id="${id}" title="Learn More">Learn more</a>
                          <div class="more-info" id="${symbols[index]}"></div>
                          <div class="check">
                          <input type="checkbox" data-coin=${symbols[index]} class="custom-control-input" id="customSwitch${index}" unchecked="">
@@ -29,16 +26,8 @@ export function createCard(value) {
     content.append(div);
 }
 
- export function showMoreInfo() {
+ export function showMoreInfo(e) {
     const data = this.response;
-    // check if in localStorage
-    if (fromLoacalStorage()) {
-        let check = fromLoacalStorage()
-        let checkId = check.map(val => val.id)
-        if (checkId.includes(data.name)) {
-            // console.log(check)
-        }
-    }
     let id = this.response.symbol.toUpperCase()
     const usd = data.market_data.current_price.usd + '<strong>$</strong>'
     const eur = data.market_data.current_price.eur + '<strong>€</strong>'
@@ -54,11 +43,4 @@ export function createCard(value) {
                     <img src="${image}" style="border-radius: 25px;" >
                     </div>
                     `
-    let objToLocal = {
-        id: data.name,
-        usd: usd,
-        eur: eur,
-        ils: ils
-    }
-    toLocalStorage(objToLocal)
 }
