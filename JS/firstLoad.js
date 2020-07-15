@@ -1,7 +1,7 @@
 import { collapse } from './collapse.js';
 import { createCard, showMoreInfo } from './ui.js'
 import { makeGraph, createCanvasElement } from './graph.js';
-import { createModal, MakeModalHtmlElement } from './modale.js'
+import { createModal } from './modale.js'
 import { callData } from './ajax.js';
 
 export function firstLoad() {
@@ -35,12 +35,10 @@ export function firstLoad() {
             if (arrayForGraph.includes(e.target.dataset.coin)) {
                 arrayForGraph = arrayForGraph.filter(coin => coin !== e.target.dataset.coin)
                 e.target.checked = false
-                console.log('fil')
             }
             else if (arrayForGraph.length < 5 && (!arrayForGraph.includes(e.target.dataset.coin))) {
                 arrayForGraph.push(e.target.dataset.coin)
                 e.target.checked = true
-                console.log('pus')
             }
             else if (arrayForGraph.length === 5) {
                 document.getElementById(e.target.id).checked = false //prevent from clickin 6th time
@@ -68,10 +66,9 @@ document.querySelector('nav').addEventListener('click', function (e) {
     if (e.target.textContent === 'Home') {
         clearInterval(interval)
         content.innerHTML = ''
-        // content.innerHTML = MakeModalHtmlElement()
         callData('https://api.coingecko.com/api/v3/coins', firstLoad);
     }
 })
 
-export let arrayForGraph = []
+let arrayForGraph = []
 let interval;
