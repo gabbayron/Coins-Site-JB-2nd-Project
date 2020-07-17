@@ -3,7 +3,7 @@ import { createCard, showMoreInfo, clearInfo } from './ui.js'
 import { makeGraph, createCanvasElement } from './graph.js';
 import { createModal, arrayIfCloseFromModale } from './modale.js'
 import { callData } from './ajax.js';
-import {searchCoin} from './searchBar.js' 
+import {searchCoin , showAllDiv} from './searchBar.js' 
 export function firstLoad() {
     let data = [];
     let coins = [];
