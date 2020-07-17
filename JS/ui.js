@@ -16,22 +16,20 @@ export function createCard(value) {
                          <div class="check">
                          <input type="checkbox" data-coin=${symbols[index]} class="custom-control-input" id="customSwitch${index}" unchecked="">
                         <label class="custom-control-label" for="customSwitch${index}"></label>
-                         </div>
-                        
+                         </div>  
                     </div>
-                    
                 </div>`);
     }).join('');
     div.innerHTML = html;
     content.append(div);
 }
 
- export function showMoreInfo(e) {
+export function showMoreInfo(e) {
     const data = this.response;
     let id = this.response.symbol.toUpperCase()
     const usd = data.market_data.current_price.usd + '<strong>$</strong>'
     const eur = data.market_data.current_price.eur + '<strong>€</strong>'
-    const ils = data.market_data.current_price.eur + '<strong>₪</strong>'
+    const ils = data.market_data.current_price.ils + '<strong>₪</strong>'
     const image = data.image.small
     let div = document.getElementById(id)
     div.innerHTML = `<div>
@@ -43,4 +41,11 @@ export function createCard(value) {
                     <img src="${image}" style="border-radius: 25px;" >
                     </div>
                     `
+}
+
+export function clearInfo(div) {
+    div.style.visibility = "hidden";
+    div.style.opacity = "0";
+    div.style.height = '0'
+    setTimeout(() => div.innerHTML='',500) 
 }

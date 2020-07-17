@@ -1,4 +1,3 @@
-
 export function collapse() {
     var coll = document.querySelectorAll(".collapsible");
     var i;

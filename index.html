@@ -22,21 +22,7 @@
     <script src="./JS/app.js" defer type="module"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js" defer></script>
     <style>
-        .card-header {
-            background: #158CBA;
-            color: #f0f0f0;
-        }
 
-        .jumbotron {
-            text-align: center;
-            margin: 0;
-            padding-top: 1rem;
-            padding-bottom: 0;
-        }
-
-        hr {
-            margin: 0;
-        }
 
         .custom-switch {
             margin-left: 1.3rem;
@@ -48,7 +34,7 @@
 </head>
 
 <body>
-    <div id="wrap">
+    <div id="wrap" class="parallax">
         <div id="header">
 
             <div class="jumbotron parallax">
@@ -68,20 +54,20 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="#">Live Reports</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="#">About</a>
                     </li>
                 </ul>
                 <div class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" id="searchInput">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit" id="searchBtn">Search</button>
                 </div>
             </div>
         </nav>
-        <div id="content">
+        <div id="content" class="parallax">
         </div>
         <div class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
