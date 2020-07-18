@@ -1,4 +1,4 @@
-
+import {toLocalStorage}  from './localStorge.js'
 let content = document.querySelector('#content');
 export function createCard(value) {
     const div = document.createElement('div');
@@ -41,11 +41,19 @@ export function showMoreInfo(e) {
                     <img src="${image}" style="border-radius: 25px;" >
                     </div>
                     `
+    let objToLocalStorage = {
+        usd: usd,
+        eur: eur,
+        ils: ils,
+        image: image
+    }
+    // toLocalStorage(objToLocalStorage, this.response.id) // incase localstorage....
 }
 
 export function clearInfo(div) {
     div.style.visibility = "hidden";
     div.style.opacity = "0";
     div.style.height = '0'
-    setTimeout(() => div.innerHTML='',500) 
+    setTimeout(() => div.innerHTML = '', 500)
 }
+

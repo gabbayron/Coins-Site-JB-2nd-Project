@@ -16,9 +16,8 @@ export function searchCoin(e) {
 
 function hideAllDiv(id) {
     let allDivs = document.querySelectorAll('.card')
-    for (var i = 0; i < allDivs.length; i++) {
+    for (let i = 0; i < allDivs.length; i++) {
         if (allDivs[i].firstElementChild.innerHTML === id) {
-            console.log('shown')
             allDivs[i].style.display = "flex"
         }
         else {
@@ -29,7 +28,7 @@ function hideAllDiv(id) {
 
 export function showAllDiv() {
     let allDivs = document.querySelectorAll('.card')
-    for (var i = 0; i < allDivs.length; i++) {
+    for (let i = 0; i < allDivs.length; i++) {
         allDivs[i].style.display = "flex"
     }
 }

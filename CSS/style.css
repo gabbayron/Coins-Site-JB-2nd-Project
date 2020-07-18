@@ -49,7 +49,10 @@ body,html {
     justify-content:center;
     width: 100% !important;
 }
-
+#chartContainer {
+    width: 80vw;
+    margin: 20px auto;
+}
 .card {
     flex: 0 1 275px;
     height: 280px;

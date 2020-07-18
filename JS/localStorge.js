@@ -1,14 +1,11 @@
-export function toLocalStorage(arr) {
-    let data = []
-    if(fromLoacalStorage() !== null) {
-        data = fromLoacalStorage()
-    }
-    data.push(arr)
-    localStorage.setItem('more-info',JSON.stringify(data))
+export function toLocalStorage(obj, key) {
+    localStorage.setItem(key, JSON.stringify(obj))
 }
 
-export function fromLoacalStorage () {
-    let temp = localStorage.getItem('more-info')
-    let data = JSON.parse(temp)
-    return data
+export function removeFromLocalStorage(key) {
+    localStorage.removeItem(key)
+}
+
+export function fromLocalStorage (key) {
+   return localStorage.getItem(key)
 }

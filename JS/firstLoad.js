@@ -3,29 +3,32 @@ import { createCard, showMoreInfo, clearInfo } from './ui.js'
 import { makeGraph, createCanvasElement } from './graph.js';
 import { createModal, arrayIfCloseFromModale } from './modale.js'
 import { callData } from './ajax.js';
-import {searchCoin , showAllDiv} from './searchBar.js' 
+import { searchCoin, showAllDiv } from './searchBar.js'
+import { removeFromLocalStorage, fromLocalStorage } from './localStorge.js'
+
 export function firstLoad() {
-    let data = [];
+    // let data = [];
     let coins = [];
-    data = this.response;
-    coins = data.filter(function (val, index) {
-        if (index < 100) {
-            return val;
-        }
-    });
+    coins = this.response;
+    // coins = data.filter(function (val, index) {
+    //     if (index < 100) {
+    //         return val;
+    //     }
+    // });
     createCard(coins);
     collapse()
     let coinsID = coins.map((val) => val.id);
-    const items = document.querySelector('.items');
-    items.addEventListener('click', function (e) {
+    document.querySelector('#wrap').addEventListener('click',function (e) {
         //CHECK IF MORE INFO HAVE BEEN CALLED ALREADY  
         if (coinsID.includes(e.target.id) === true) {
             e.preventDefault()
             if (e.target.parentElement.childNodes[3].innerText === '') {
+                // !fromLocalStorage(e.target.id) // incase localStorage
                 let id = e.target.id;
                 let url = `https://api.coingecko.com/api/v3/coins/${id}`;
                 callData(url, showMoreInfo);
-                setTimeout(()=> clearInfo(e.target.parentElement.childNodes[3]),120000 ) // cleared after 2 minutes 
+                setTimeout(() => clearInfo(e.target.parentElement.childNodes[3]), 120000) // cleared more-info div after 2 minutes
+                // setTimeout(() => removeFromLocalStorage(e.target.id), 120000)  // clear LocalStorage after 2 minutes 
             }
         }
     });
@@ -53,34 +56,40 @@ export function firstLoad() {
 document.querySelector('.modal-footer').onclick = function (e) {
     if (e.target.textContent === 'Close') {
         arrayForGraph = arrayIfCloseFromModale
-        console.log(arrayForGraph + ' array for graph after change')
     }
 }
-
 document.querySelector('nav').addEventListener('click', function (e) {
     if (e.target.textContent === 'Live Reports') {
         if (arrayForGraph.length === 0) {
             alert('Please Pick At Least 1 Coin For Live Report Option')
         }
         if (arrayForGraph.length >= 1) {
-            document.querySelector('#content').style.display = 'block'
+            // contentHtml = document.querySelector('#content').innerHTML // incase LocalStorage
+            document.querySelector('#content').style.display = 'none' // hide coins div
+            document.querySelector('#chartContainer').style.display = 'block'
             let url = arrayForGraph.join()
             createCanvasElement(arrayForGraph)
             callData(`https://min-api.cryptocompare.com/data/pricemulti?fsyms=${url}&tsyms=USD`, makeGraph)
-            interval = setInterval(function () { callData(`https://min-api.cryptocompare.com/data/pricemulti?fsyms=${url}&tsyms=USD`, makeGraph) }, 2000)
-            arrayForGraph = []
+            graphInterval = setInterval(function () { callData(`https://min-api.cryptocompare.com/data/pricemulti?fsyms=${url}&tsyms=USD`, makeGraph) }, 2000)
         }
     }
     if (e.target.textContent === 'Home') {
         document.querySelector('#content').style.display = 'flex'
-        clearInterval(interval)
-        content.innerHTML = ''
-        callData('https://api.coingecko.com/api/v3/coins', firstLoad);
+        document.querySelector('#chartContainer').style.display = 'none'
+        showAllDiv() //incase someone still have the results on search bar
+        clearInterval(graphInterval) // clear graph drawing
+        
+        // ----- old version ------ //
+        // arrayForGraph = []
+        // content.innerHTML = ''
+        // callData('https://api.coingecko.com/api/v3/coins', firstLoad);
+        // document.querySelector('#content').innerHTML = contentHtml // incase...
     }
-    if (e.target.textContent === 'Search'){
+    if (e.target.textContent === 'Search') {
         searchCoin(e)
     }
 })
 
 export let arrayForGraph = []
-let interval;
+let graphInterval;
+let contentHtml ;

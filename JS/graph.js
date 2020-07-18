@@ -4,7 +4,7 @@ export function makeGraph() {
     let keys = Object.keys(this.response)
 
     if (chart.data) {
-        for (var i = 0; i < keys.length; i++) {
+        for (let i = 0; i < keys.length; i++) {
             let key = keys[i]
             let coin = this.response[key].USD
             objToPush = { x: new Date(), y: coin }
@@ -20,7 +20,7 @@ export function makeGraph() {
 let chart;
 
 export function createCanvasElement(arr) {
-    chart = new CanvasJS.Chart("content", {
+    chart = new CanvasJS.Chart("chartContainer", {
         animationEnabled: true,
         title: {
             text: "Coins Value Comparison To USD"
