@@ -33,6 +33,9 @@ body,html {
 }
 .navbar{
     margin-bottom: 15px;
+    position: sticky !important;
+    top: 0;
+    z-index: 1;
 }
 .btn-primary {
     background-color: #0881a3 !important;
