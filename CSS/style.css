@@ -112,3 +112,20 @@ body,html {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+#about {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#circusImg {
+    width: 30%;
+    height: 600px;
+}
+
+#aboutRon {
+    width: 30%;
+}

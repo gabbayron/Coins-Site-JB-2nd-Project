@@ -5,11 +5,13 @@ import { createModal, arrayIfCloseFromModale } from './modale.js'
 import { callData } from './ajax.js';
 import { searchCoin, showAllDiv } from './searchBar.js'
 import { removeFromLocalStorage, fromLocalStorage } from './localStorge.js'
+import {about} from './about.js'
 
 export function firstLoad() {
     // let data = [];
     let coins = [];
     coins = this.response;
+    // In Case theres too many coins ;) 
     // coins = data.filter(function (val, index) {
     //     if (index < 100) {
     //         return val;
@@ -58,13 +60,16 @@ document.querySelector('.modal-footer').onclick = function (e) {
         arrayForGraph = arrayIfCloseFromModale
     }
 }
+// Navbar Click routes
 document.querySelector('nav').addEventListener('click', function (e) {
+    e.preventDefault()
     if (e.target.textContent === 'Live Reports') {
         if (arrayForGraph.length === 0) {
             alert('Please Pick At Least 1 Coin For Live Report Option')
         }
         if (arrayForGraph.length >= 1) {
             // contentHtml = document.querySelector('#content').innerHTML // incase LocalStorage
+            document.querySelector('#about').style.display = 'none'
             document.querySelector('#content').style.display = 'none' // hide coins div
             document.querySelector('#chartContainer').style.display = 'block'
             let url = arrayForGraph.join()
@@ -74,6 +79,8 @@ document.querySelector('nav').addEventListener('click', function (e) {
         }
     }
     if (e.target.textContent === 'Home') {
+        document.querySelector('#about').style.display = 'none'
+        document.querySelector('.items').style.display = 'flex'
         document.querySelector('#content').style.display = 'flex'
         document.querySelector('#chartContainer').style.display = 'none'
         showAllDiv() //incase someone still have the results on search bar
@@ -87,6 +94,9 @@ document.querySelector('nav').addEventListener('click', function (e) {
     }
     if (e.target.textContent === 'Search') {
         searchCoin(e)
+    }
+    if(e.target.textContent ==='About') {
+        about()
     }
 })
 
