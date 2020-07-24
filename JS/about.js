@@ -7,7 +7,7 @@ export function about() {
                 <h1>About Ron Gabbay </h1>
                 <p>Hi! My name is Ron, I'm 29 years old. <br>
                  Currently living in Tel-Aviv.<br>
-                 I served 5 years of military  in Israeli Navy Submarines unit<br>
+                 I served 5 years of in Israeli Navy Submarines unit<br>
                  After my military service, i learned 3 years at Sandciel Circus School with additional classes at France and preformed around Israel <br>
                  specialized at Partner Acrobatics  (Hand To Hand)  &  Aerial Straps.</p>
                  <h1>About The Project</h1>

@@ -78,6 +78,8 @@ body,html {
     border: 0 !important;
     height: 30% !important;
     text-align: center;
+    box-shadow: none !important;
+    -webkit-box-shadow: none 
 }
 
 .more-info {
@@ -117,15 +119,23 @@ body,html {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
     width: 80%;
     margin: 0 auto;
 }
 
 #circusImg {
     width: 30%;
+    max-width: 450px;
     height: 600px;
 }
 
 #aboutRon {
     width: 30%;
 }
+
+@media (max-width: 375px) {
+    #about {
+        background-color: red;
+    }
+  }
