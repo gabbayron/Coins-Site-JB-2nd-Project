@@ -18,10 +18,8 @@ document.querySelector('.modal-body').addEventListener('click', makeFilterArray)
 
 function clearCheckBox(e) {
     if (e.target.textContent === 'Save Changes') {
-        console.log(arrayToCheck)
         for (let i = 0; i < arrayToCheck.length; i++) {
             document.querySelector(`#${arrayToCheck[i]}`).nextElementSibling.childNodes[1].checked = false
-            console.log(`${arrayToCheck[i]} changed to false`)
         }
         $('.modal').modal('hide')
         arrayToCheck = []
@@ -36,11 +34,9 @@ function makeFilterArray(e) {
     if (e.target.nodeName === 'INPUT')
         if (!arrayToCheck.includes(e.target.dataset.coin)) {
             arrayToCheck.push(e.target.dataset.coin)
-            console.log('push')
         }
         else if (arrayToCheck.includes(e.target.dataset.coin)) {
             arrayToCheck = arrayToCheck.filter(coin => coin !== e.target.dataset.coin)
-            console.log('fil')
         }
 }
 
