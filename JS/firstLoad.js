@@ -8,15 +8,8 @@ import { removeFromLocalStorage, fromLocalStorage } from './localStorge.js'
 import {about} from './about.js'
 
 export function firstLoad() {
-    // let data = [];
     let coins = [];
     coins = this.response;
-    // In Case theres too many coins ;) 
-    // coins = data.filter(function (val, index) {
-    //     if (index < 100) {
-    //         return val;
-    //     }
-    // });
     createCard(coins);
     collapse()
     let coinsID = coins.map((val) => val.id);
@@ -25,12 +18,10 @@ export function firstLoad() {
         if (coinsID.includes(e.target.id) === true) {
             e.preventDefault()
             if (e.target.parentElement.childNodes[3].innerText === '') {
-                // !fromLocalStorage(e.target.id) // incase localStorage
                 let id = e.target.id;
                 let url = `https://api.coingecko.com/api/v3/coins/${id}`;
                 callData(url, showMoreInfo);
                 setTimeout(() => clearInfo(e.target.parentElement.childNodes[3]), 120000) // cleared more-info div after 2 minutes
-                // setTimeout(() => removeFromLocalStorage(e.target.id), 120000)  // clear LocalStorage after 2 minutes 
             }
         }
     });
@@ -68,7 +59,6 @@ document.querySelector('nav').addEventListener('click', function (e) {
             alert('Please Pick At Least 1 Coin For Live Report Option')
         }
         if (arrayForGraph.length >= 1) {
-            // contentHtml = document.querySelector('#content').innerHTML // incase LocalStorage
             document.querySelector('#about').style.display = 'none'
             document.querySelector('#content').style.display = 'none' // hide coins div
             document.querySelector('#chartContainer').style.display = 'block'
@@ -85,12 +75,6 @@ document.querySelector('nav').addEventListener('click', function (e) {
         document.querySelector('#chartContainer').style.display = 'none'
         showAllDiv() //incase someone still have the results on search bar
         clearInterval(graphInterval) // clear graph drawing
-        
-        // ----- old version ------ //
-        // arrayForGraph = []
-        // content.innerHTML = ''
-        // callData('https://api.coingecko.com/api/v3/coins', firstLoad);
-        // document.querySelector('#content').innerHTML = contentHtml // incase...
     }
     if (e.target.textContent === 'Search') {
         searchCoin(e)

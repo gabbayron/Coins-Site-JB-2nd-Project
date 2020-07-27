@@ -47,7 +47,6 @@ export function showMoreInfo(e) {
         ils: ils,
         image: image
     }
-    // toLocalStorage(objToLocalStorage, this.response.id) // incase localstorage....
 }
 
 export function clearInfo(div) {
