@@ -1,5 +1,5 @@
-import {toLocalStorage}  from './localStorge.js'
 let content = document.querySelector('#content');
+
 export function createCard(value) {
     const div = document.createElement('div');
     // Symbol To Upper Case 

@@ -4,7 +4,6 @@ import { makeGraph, createCanvasElement } from './graph.js';
 import { createModal, arrayIfCloseFromModale } from './modale.js'
 import { callData } from './ajax.js';
 import { searchCoin, showAllDiv } from './searchBar.js'
-import { removeFromLocalStorage, fromLocalStorage } from './localStorge.js'
 import {about} from './about.js'
 
 export function firstLoad() {
