@@ -5,13 +5,13 @@ export function about() {
     divAbout.style.display = 'flex'
     let html = `<div id="aboutRon">
                 <h1>About Ron Gabbay </h1>
-                <p>Hi! My name is Ron, I'm 29 years old. <br>
+                <p class="lead">Hi! My name is Ron, I'm 29 years old. <br>
                  Currently living in Tel-Aviv.<br>
                  I served 5 years of in Israeli Navy Submarines unit<br>
                  After my military service, i learned 3 years at Sandciel Circus School with additional classes at France and preformed around Israel <br>
                  specialized at Partner Acrobatics  (Hand To Hand)  &  Aerial Straps.</p>
                  <h1>About The Project</h1>
-                 <p>This project contains all what we have learned in the past 4 months of our Full-Stack course, which includes subjects as</p>
+                 <p class="lead">This project contains all that we have learned in the past 4 months of our Full-Stack course, which includes subjects as</p>
                 <ul>
                     <li>JavaScript</li>
                     <li>HTML & Css</li>
@@ -26,7 +26,5 @@ export function about() {
                 </div>
                 <img src="../imgs/circus-min.jpg" id="circusImg">
                 `
-
-
     divAbout.innerHTML = html
 }
