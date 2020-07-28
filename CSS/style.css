@@ -125,12 +125,9 @@ body,html {
     width: 30%;
     max-width: 450px;
     height: 600px;
-    transition: height 3s;
 }
 @media (max-width: 990px) {
     #circusImg {
-    height: 250px;
-    width: 150px;
-    margin-left: 40px;
+    display: none;
     }
   }
