@@ -1,7 +1,6 @@
 body,html {
     width: 100%;
 }
-
 #content {
     width:75%;
     margin: 0 auto;
@@ -37,13 +36,15 @@ body,html {
     top: 0;
     z-index: 1;
 }
+.navbar-brand {
+    cursor: context-menu !important;
+}
 .btn-primary {
     background-color: #0881a3 !important;
 }
 .btn-primary:hover {
     background-color:#117298 !important;
 }
-
 .items {
     display: flex;
     flex-wrap: wrap;
@@ -101,11 +102,9 @@ body,html {
     display: flex;
     justify-content: flex-end;
 }
-
 .collapsible {
     width: 150%
 }
-
 .parallax , html {
     background-image: url('/imgs/25101-min.jpg');
     height: 100%; 
@@ -114,7 +113,6 @@ body,html {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
 #about {
     display: flex;
     flex-direction: row;
@@ -123,15 +121,12 @@ body,html {
     width: 80%;
     margin: 0 auto;
 }
-
 #circusImg {
     width: 30%;
     max-width: 450px;
     height: 600px;
     transition: height 3s;
 }
-
-
 @media (max-width: 990px) {
     #circusImg {
     height: 250px;
